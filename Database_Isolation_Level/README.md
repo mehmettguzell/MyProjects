@@ -60,18 +60,17 @@
 
 Tüm test sonuçları `screenshots/ResultSS` klasöründe detaylı tablo olarak sunulmuştur.
 
-
 ## Kurulum ve Çalıştırma
 1. Visual Studio ile projeyi açın.
 2. `AdventureWorks2022` veritabanını SQL Server’a yükleyin.
   - Veritabanı indirildikten sonra sırasıyla aşağıdaki sslerde bulunan adımlar uygulanarak SSMS'e indirilen database eklenir.
-  - https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_1.png
-  - https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_2.png
+  - ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_1.png)
+  - ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_2.png)
 3. Form1.cs dosyasında bulunan `connectionString` değişkenine kendi connection string bilginizi giriniz.
 4. `connectionString` in doğruluğunu test etmek için  
   - `program.cs` dosyası aşağıdaki ss deki gibi düzenlenmeli ve çıktı test edilmeli.
-  - https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_3.png
-  - https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_4.png
+  - ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_3.png)
+  - ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_4.png)
 5. Projeyi çalıştırın, arayüzden kullanıcı sayılarını ve izolasyon seviyesini seçip simülasyonu başlatın.
 
 
