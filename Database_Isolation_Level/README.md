@@ -1,100 +1,112 @@
 # Database Isolation Simulation Project
-- Bu proje, **Maltepe Üniversitesi - SE308 Advanced Database Management System** dersi kapsamında yapılan projelerden biri olarak hazırlanmıştır.
 
+* This project was developed as part of the **Maltepe University - SE308 Advanced Database Management System** course.
 
-## Proje Açıklaması Ve Amacı
-- Bu projenin temel amacı, farklı **veritabanı işlem izolasyon seviyelerinin** sistem performansına olan etkilerini **gerçekçi bir simülasyon ortamında** analiz etmektir.
-- Kullanıcı sayısı arttıkça **işlem sürelerinin**, **deadlock (kilitlenme)** olaylarının ve **verimliliğin** nasıl değiştiğini gözlemlemek, aynı zamanda **indeks kullanımı** ile **indekssiz yapıların** performanslarını karşılaştırmak hedeflenmiştir.
-- Ve bu doğrultuda Microsoft'un **AdventureWorks2022** veritabanını kullanarak farklı konfigürasyonlar altında performans ölçümleri yapan bir simülasyon uygulaması geliştirildi
-- Veri tabanı linki : https://github.com/Microsoft/sql-server-samples/releases/
+## Project Description and Objective
 
-## Neden Bu Projeyi Geliştirdim
-- Gerçek dünya uygulamalarında veritabanları, aynı anda **çok sayıda kullanıcıdan gelen işlemleri eşzamanlı olarak** yönetmek zorundadır.
-- İşlem **izolasyon seviyeleri**, veri tutarlılığını sağlamak açısından kritik öneme sahiptir; ancak bu durum sistem performansını olumsuz etkileyebilir.
-- Bu proje sayesinde, farklı kullanıcı yükleri ve senaryolar altında hangi izolasyon seviyesinin tercih edilmesi gerektiği daha net anlaşılmıştır.
-- Aynı zamanda, indeks kullanımının performans üzerindeki doğrudan etkisi detaylı olarak ölçülmüş ve analiz edilmiştir.
+* The main goal of this project is to analyze the effects of different **database transaction isolation levels** on system performance in a **realistic simulation environment**.
+* The project aims to observe how **transaction durations**, **deadlock occurrences**, and **efficiency** change as the number of users increases. It also compares the performance of **indexed** versus **non-indexed** database structures.
+* A simulation application was developed using Microsoft's **AdventureWorks2022** database to measure performance under various configurations.
+* Database link: [https://github.com/Microsoft/sql-server-samples/releases/](https://github.com/Microsoft/sql-server-samples/releases/)
 
+## Why I Developed This Project
 
-## Simülasyon Detayları
-- **Tip A Kullanıcılar**: 100 kez `UPDATE` sorgusu çalıştırır (yazma işlemi)
-- **Tip B Kullanıcılar**: 100 kez `SELECT + SUM` sorgusu çalıştırır (okuma işlemi)
-- Her kullanıcı **ayrı bir thread** içinde çalışır.
-- Kullanıcı sayısı, izolasyon seviyesi ve indeks durumu arayüzden seçilebilir.
-- Simülasyon sonunda:
-  - Ortalama işlem süreleri
-  - Oluşan kilitlenme (deadlock) sayıları
-  - Arayüzde detaylı olarak raporlanır.
+* In real-world applications, databases must handle **simultaneous transactions from multiple users** efficiently.
+* **Transaction isolation levels** are critical for maintaining data consistency, but they can negatively impact system performance.
+* This project provides a clearer understanding of which isolation levels are preferable under varying user loads and scenarios.
+* Additionally, the direct impact of indexing on performance has been thoroughly measured and analyzed.
 
+## Simulation Details
 
-## 🛠️ Kullanılan Teknolojiler
-- **C# Windows Forms** (Masaüstü Arayüzü)
-- **Microsoft SQL Server** ve **AdventureWorks2022** veritabanı
-- **Çoklu Thread Kullanımı** (`System.Threading`)
-- **ADO.NET** ile SQL bağlantısı
-- **Stopwatch** ile zaman ölçümü
-- **İşlem izolasyon seviyeleri**: 
-  - READ UNCOMMITTED
-  - READ COMMITTED
-  - REPEATABLE READ
-  - SERIALIZABLE
+* **Type A Users**: Execute `UPDATE` queries 100 times (write operations)
+* **Type B Users**: Execute `SELECT + SUM` queries 100 times (read operations)
+* Each user runs in a **separate thread**.
+* The number of users, isolation level, and index settings can be selected from the interface.
+* At the end of the simulation:
 
+  * Average transaction times
+  * Number of **deadlock** events
+  * Detailed reports are displayed in the interface
 
-## 🖼️ Arayüzden Görüntüler
-- Kullanıcı sayısı ve izolasyon seviyesi seçimi
-- "Simülasyonu Başlat" butonu
-- İşlem süreci için ilerleme çubuğu
-- Sonuçları gösteren bir metin kutusu
+## Technologies Used
 
-> Arayüz ile ilgili screenshotlar Ekran görüntüleri `screenshots/UIss` klasöründe yer almaktadır.
+* **C# Windows Forms** (Desktop UI)
+* **Microsoft SQL Server** with **AdventureWorks2022** database
+* **Multithreading** (`System.Threading`)
+* **ADO.NET** for SQL connections
+* **Stopwatch** for time measurement
+* **Transaction Isolation Levels**:
 
+  * READ UNCOMMITTED
+  * READ COMMITTED
+  * REPEATABLE READ
+  * SERIALIZABLE
 
-## 📈 Karşılaştırmalı Performans Testleri
-### 🔹 İndeksli Yapı ile:
-- Genellikle daha kısa işlem süreleri
-- Daha az deadlock
-- Daha stabil sonuçlar
+## User Interface Screenshots
 
-### İndekssiz Yapı ile:
-- İşlem süreleri ciddi şekilde artmakta
-- Deadlock olayları çok daha sık gerçekleşmekte
+* User count and isolation level selection
+* "Start Simulation" button
+* Progress bar for transaction process
+* Text box displaying the results
 
-Tüm test sonuçları `screenshots/ResultSS` klasöründe detaylı tablo olarak sunulmuştur.
+> Screenshots related to the interface are available in the `screenshots/UIss` folder.
 
-## Kurulum ve Çalıştırma
-1. Visual Studio ile projeyi açın.
-2. `AdventureWorks2022` veritabanını SQL Server’a yükleyin.
-  - Veritabanı indirildikten sonra sırasıyla aşağıdaki sslerde bulunan adımlar uygulanarak SSMS'e indirilen database eklenir.
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_1.png)
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_2.png)
-3. Form1.cs dosyasında bulunan `connectionString` değişkenine kendi connection string bilginizi giriniz.
-4. `connectionString` in doğruluğunu test etmek için  
-  - `program.cs` dosyası aşağıdaki ss deki gibi düzenlenmeli ve çıktı test edilmeli.
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_3.png)
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_4.png)
-5. Projeyi çalıştırın, arayüzden kullanıcı sayılarını ve izolasyon seviyesini seçip simülasyonu başlatın.
+## Comparative Performance Tests
 
+### With Indexes:
 
-## 📌 Öne Çıkan Özellikler
-- Gerçek zamanlı thread yönetimi
-- İzolasyon seviyelerine göre işlem mantığı ayrımı
-- Kullanıcı sayısına göre otomatik performans değerlendirmesi
-- Arayüzde görsel ilerleme ve sonuç raporlama
-- Deadlock algılama ve istatistik çıkarımı
-- Sonuçlar arasında kıyaslama imkanı
+* Generally shorter transaction durations
+* Fewer deadlocks
+* More stable results
 
+### Without Indexes:
 
-## Edinilen Deneyimler
-- İzolasyon seviyeleri teoride basit gibi görünse de performans üzerindeki etkileri çok büyüktür.
-- Deadlock problemleri beklenenden daha sık yaşanabilir.
-- İndeks kullanımının performansa etkisi doğrudan gözlemlenmiştir.
-- Çoklu thread yapılarında senkronizasyon önemlidir.
-- Gerçekçi simülasyonlar için sistem kaynaklarının sınırlarını dikkate almak gerekir.
+* Significantly longer transaction durations
+* Deadlocks occur much more frequently
 
-## Lisans
-- Bu proje akademik amaçla hazırlanmış olup lisans gerektirmez. Ancak alıntı yapılırken kaynak gösterilmesi rica olunur.
+All test results are presented in detail in tables located in the `screenshots/ResultSS` folder.
 
-## Sonuç
-- Bu proje, **veritabanı işlem izolasyon seviyeleri** ve **indeks kullanımının** performansa olan etkisini anlamak için kapsamlı bir simülasyon ortamı sunar. Gerçek uygulamalarda bu bilgilere dayanarak sistem yapılandırmalarının optimize edilmesi mümkündür.
+## Installation and Running
+
+1. Open the project with Visual Studio.
+2. Load the `AdventureWorks2022` database into SQL Server.
+
+   * After downloading the database, follow the steps shown in the screenshots below to import it into SSMS.
+     ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_1.png)
+     ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_2.png)
+3. In the `Form1.cs` file, set your own `connectionString`.
+4. To verify your `connectionString`,
+
+   * Update the `program.cs` file as shown in the screenshot below and test the output.
+     ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_3.png)
+     ![](https://github.com/mehmettguzell/MyProjects/blob/main/Database_Isolation_Level/screenshots/DescriptionSS/Screenshot_4.png)
+5. Run the project, select the number of users and isolation level from the interface, and start the simulation.
+
+## Highlighted Features
+
+* Real-time thread management
+* Transaction logic varies by isolation level
+* Automatic performance evaluation based on user count
+* Visual progress tracking and result reporting in the interface
+* Deadlock detection and statistical analysis
+* Ability to compare results
+
+## Experience Gained
+
+* Although isolation levels may seem simple in theory, they have significant effects on performance.
+* Deadlock issues can occur more frequently than expected.
+* The impact of indexing on performance is directly observable.
+* Synchronization is critical in multithreaded structures.
+* For realistic simulations, system resource limits must be taken into account.
+
+## License
+
+* This project was prepared for academic purposes and does not require a license. However, please cite the source when referencing.
+
+## Conclusion
+
+* This project provides a comprehensive simulation environment to understand the impact of **database transaction isolation levels** and **index usage** on performance. These insights can help optimize system configurations in real-world applications.
+
 ---
 
 👨‍💻 Mehmet Güzel
