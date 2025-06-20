@@ -1,33 +1,33 @@
-# Gelişmiş SQL Sorgu Optimizasyon Projesi
+# Advanced SQL Query Optimization Project
 
-**AdventureWorks 2012 Veritabanında Stratejik İndeksleme ile Performans İyileştirme**
+**Performance Improvement through Strategic Indexing in the AdventureWorks 2012 Database**
 
-## Proje Genel Bakış
+## Project Overview
 
-Bu proje, `AdventureWorks 2012` veritabanında **sorgu mantığı ve veritabanı yapısı değiştirilmeden** performans iyileştirmeleri gerçekleştirmeyi amaçlamaktadır. Temel hedefler:
+This project aims to achieve performance improvements in the `AdventureWorks 2012` database **without altering query logic or the database schema**. The main objectives:
 
-* **Ana Amaç**: Sorgu çalışma sürelerini **%16-33** oranında azaltmak
-* **Kritik Kısıtlamalar**:
+* **Primary Goal**: Reduce query execution times by **16–33%**
+* **Critical Constraints**:
 
-  * ❌ Sorgu değişikliği yasak
-  * ❌ Şema değişikliği yasak
-  * ❌ Veri manipülasyonu yasak
-  * ✅ Yeni indeks oluşturma serbest
-* **Metodoloji**:
+  * ❌ Query modification is not allowed
+  * ❌ Schema modification is not allowed
+  * ❌ Data manipulation is not allowed
+  * ✅ Creating new indexes is allowed
+* **Methodology**:
 
-  * Her sorgu 100+ kez çalıştırılarak istatistiksel geçerlilik sağlandı
-  * Önbellek etkisini ortadan kaldırmak için her çalıştırmadan önce `DBCC FREEPROCCACHE` ve `DBCC DROPCLEANBUFFERS` komutları uygulandı
-  * Optimizasyonlar kademeli olarak uygulanıp her adımın etkisi ölçüldü
-  * Projenin arayüzünden örnek bir fotoğraf aşağıda bulunmaktadır. Geri kalan arayüz ssleri `/ScreenShots/UISS`klasöründe bulunmaktadır.
+  * Each query was executed 100+ times to ensure statistical validity
+  * Cache effects were eliminated by running `DBCC FREEPROCCACHE` and `DBCC DROPCLEANBUFFERS` before each execution
+  * Optimizations were applied incrementally and their impact was measured step by step
+  * A sample screenshot of the project interface is shown below. Additional interface screenshots can be found in the `/ScreenShots/UISS` directory.
     ![]()
 
-## Kullanılan Sorgular
+## Queries Used
 
-Bu projede, performans iyileştirme amacıyla üç temel sorgu kullanılmıştır. Bu sorgular doğrudan gerçek senaryoları yansıtmakta ve sorgu mantığı **değiştirilmeksizin** optimize edilmiştir.
+This project focuses on performance improvements of three core queries that reflect real-world scenarios. Query logic remained **unchanged** during optimization.
 
-### Sorgu 1 – Çevrimiçi Siparişler (2013)
+### Query 1 – Online Orders (2013)
 
-2013 yılına ait çevrimiçi siparişleri, sipariş tarihi, eyalet adı ve şehir adı bilgileriyle birlikte; toplam sipariş miktarı ve toplam tutar bazında gruplar.
+Displays online orders from the year 2013, grouped by order date, state name, and city, along with total quantity and total revenue.
 
 ```sql
 SELECT SOH.OrderDate,
@@ -47,12 +47,11 @@ SELECT SOH.OrderDate,
  GROUP BY SOH.OrderDate, PROV.Name, ADDR.City
  ORDER BY SOH.OrderDate, PROV.Name, ADDR.City;
 ```
-
 ---
 
-### Sorgu 2 – Belirli Ürünler İçin Çevrimiçi Siparişler (2013)
+### Query 2 – Online Orders for Specific Products (2013)
 
-Rengi **Siyah** veya **Sarı** olan ve `MakeFlag = 1` veya `FinishedGoodsFlag = 1` şartını sağlayan ürünlerin 2013 yılına ait çevrimiçi siparişleri. Sonuçlar, sipariş tarihi ve ürün kategorisi adına göre gruplanır.
+Shows online orders in 2013 for products that are **black** or **yellow** and satisfy `MakeFlag = 1` or `FinishedGoodsFlag = 1`. Results are grouped by order date and category.
 
 ```sql
 SELECT SOH.OrderDate,
@@ -78,9 +77,9 @@ SELECT SOH.OrderDate,
 
 ---
 
-### Sorgu 3 – Fiziksel Mağaza Siparişleri (2013)
+### Query 3 – Physical Store Orders (2013)
 
-Rengi **Siyah** veya **Sarı** olan ve `MakeFlag = 1` veya `FinishedGoodsFlag = 1` olan ürünlerin **fiziksel mağazalardan verilen siparişleri**. Sonuçlar mağaza adı ve ürün kategorisine göre gruplanır.
+Displays physical store orders in 2013 for products that are **black** or **yellow** and meet the `MakeFlag = 1` or `FinishedGoodsFlag = 1` condition. Results are grouped by store name and product category.
 
 ```sql
 SELECT STOR.Name as StoreName,
@@ -108,152 +107,180 @@ SELECT STOR.Name as StoreName,
  ORDER BY STOR.Name, CAT.Name;
 ```
 
-## Temel Kazanımlar ve Dersler  
-### Kritik Başarı Faktörleri  
-- Hangi sütunlara indeks eklenmesi gerektiğini (WHERE, JOIN, ORDER BY) ve bileşik indekslerin nasıl tasarlanacağını öğrendim.
-- "Her indeks her zaman iyileştirmez" prensibini öğrendim.
-- Fazla indeksin yazma performansını nasıl düşürdüğünü gözlemledim.
-- DBCC komutlarıyla önbellek temizlemenin test sonuçlarını nasıl etkilediğini öğrendim.
-- Gerçek hayatta cache'in performansa etkisini kavradım.
+## Key Learnings and Lessons
 
-### Karşılaşılan Zorluklar  
-- **Önbellek Yönetimi**: DBCC komutlarının tutarlı uygulanmasının sağlanması  
-- **Ölçüm Tutarlılığı**: Donanım kaynaklı dalgalanmaların giderilmesi  
-- **İndeks Etkileşimi**: Yeni indekslerin diğer sorguları etkileme riski  
+### Critical Success Factors
 
-## Sorgu Analizleri ve Optimizasyon Stratejileri  
+* Learned how to determine which columns should be indexed (WHERE, JOIN, ORDER BY)
+* Understood that "not every index leads to improvement"
+* Observed how excessive indexing can negatively impact write performance
+* Learned how `DBCC` commands affect test outcomes
+* Gained insights into real-world caching effects on performance
 
-### Sorgu 1: Çevrimiçi Siparişler (2013)  
-**Orijinal Sorgu**:  
-- 10,899 satır döndürür  
-- 4 tablo birleşimi (SalesOrderDetail, SalesOrderHeader, Address, StateProvince)  
-- **Ortalama Süre**: 761.19 ms  
+### Challenges Encountered
 
-**Optimizasyonlar**:  
-1. **Bileşik İndeks**:  
+* **Cache Management**: Ensuring consistent use of `DBCC` commands
+* **Measurement Consistency**: Eliminating hardware-related timing fluctuations
+* **Index Interaction**: Avoiding unintended effects on other queries
+
+## Query Analysis and Optimization Strategies
+
+### Query 1: Online Orders (2013)
+
+**Original Query**:
+
+* Returns 10,899 rows
+* 4-table join
+* **Average Execution Time**: 761.19 ms
+
+**Optimizations**:
+
+1. **Composite Index**
+
    ```sql
    CREATE NONCLUSTERED INDEX IX1_SalesOrderHeader 
    ON Sales.SalesOrderHeader (OrderDate, OnlineOrderFlag, ShipToAddressID)
    ```
-   - **Etki**: WHERE koşullarında ve birleştirmelerde indeks taraması sağladı  
-   - **Sonuç**: %16.12 iyileşme (638.51 ms)  
 
-2. **Kapsayan İndeks**:  
+   * Enabled index scans on WHERE and JOIN clauses
+   * **Improvement**: 16.12% (638.51 ms)
+
+2. **Covering Index**
+
    ```sql
    CREATE INDEX IX2_SalesOrderDetail 
    ON Sales.SalesOrderDetail (SalesOrderID) 
    INCLUDE (OrderQty, LineTotal)
    ```
-   - **Etki**: Toplama işlemleri için ek tablo erişimi ortadan kaldırıldı  
-   - **Sonuç**: %33.36 iyileşme (507.15 ms)  
 
-3. **Birleştirme Optimizasyonu**:  
+   * Eliminated need for extra table access during aggregation
+   * **Improvement**: 33.36% (507.15 ms)
+
+3. **Join Optimization**
+
    ```sql
    CREATE INDEX IX3_Address 
    ON Person.Address (AddressID) 
    INCLUDE (City, StateProvinceID)
    ```
-   - **Etki**: Adres bilgilerine doğrudan indeks üzerinden erişim  
-   - **Sonuç**: %6.60 ek iyileşme  
+
+   * Enabled direct access to address details via index
+   * **Additional Improvement**: 6.60%
 
 ---
 
-### Sorgu 2: Belirli Ürünler için Çevrimiçi Siparişler  
-**Orijinal Sorgu**:  
-- 1,360 satır döndürür  
-- 5 tablo birleşimi  
-- **Ortalama Süre**: 833.74 ms  
+### Query 2: Online Orders for Specific Products
 
-**Optimizasyonlar**:  
-1. **Filtreleme İndeksi**:  
+**Original Query**:
+
+* Returns 1,360 rows
+* 5-table join
+* **Average Execution Time**: 833.74 ms
+
+**Optimizations**:
+
+1. **Filtering Index**
+
    ```sql
    CREATE INDEX IX2_Product 
    ON Production.Product (MakeFlag, FinishedGoodsFlag, Color)
    ```
-   - **Etki**: Ürün filtreleme işlemlerinde tam tablo taraması önlendi  
-   - **Sonuç**: %2.16 iyileşme (815.76 ms)  
 
-2. **Birleştirme Optimizasyonu**:  
+   * Prevented full table scan on product filters
+   * **Improvement**: 2.16% (815.76 ms)
+
+2. **Join Optimization**
+
    ```sql
    CREATE INDEX IX3_Subcategory 
    ON Production.ProductSubcategory (ProductCategoryID)
    ```
-   - **Etki**: Kategori hiyerarşisinde daha hızlı gezinme  
-   - **Sonuç**: %2.78 toplam iyileşme (810.54 ms)  
+
+   * Faster navigation through category hierarchy
+   * **Total Improvement**: 2.78% (810.54 ms)
 
 ---
 
-### Sorgu 3: Fiziksel Mağaza Siparişleri  
-**Orijinal Sorgu**:  
-- 656 satır döndürür  
-- 6 tablo birleşimi  
-- **Ortalama Süre**: 840.24 ms  
+### Query 3: Physical Store Orders
 
-**Optimizasyonlar**:  
-1. **Filtrelenmiş İndeks**:  
+**Original Query**:
+
+* Returns 656 rows
+* 6-table join
+* **Average Execution Time**: 840.24 ms
+
+**Optimizations**:
+
+1. **Filtered Index**
+
    ```sql
    CREATE INDEX IDX_SOH_Filtered 
    ON Sales.SalesOrderHeader (OrderDate, OnlineOrderFlag)
    WHERE OnlineOrderFlag = 0
    ```
-   - **Etki**: Sadece fiziksel siparişleri içeren küçültülmüş indeks  
-   - **Sonuç**: %10.55 iyileşme (751.56 ms)  
 
-2. **Birleştirme İndeksi**:  
+   * Smaller index covering only physical orders
+   * **Improvement**: 10.55% (751.56 ms)
+
+2. **Join Index**
+
    ```sql
    CREATE INDEX IDX_SOD_Join 
    ON Sales.SalesOrderDetail (SalesOrderID, ProductID)
    ```
-   - **Etki**: Satış detaylarında hızlı eşleştirme  
-   - **Sonuç**: %1.33 ek iyileşme  
 
-3. **Kapsamlı Optimizasyon**:  
+   * Faster match in sales details
+   * **Additional Improvement**: 1.33%
+
+3. **Comprehensive Optimization**
+
    ```sql
    CREATE INDEX IDX_SOH_Enhanced 
    ON Sales.SalesOrderHeader (OrderDate, OnlineOrderFlag)
    INCLUDE (SalesOrderID, CustomerID)
    WHERE OnlineOrderFlag = 0
    ```
-   - **Etki**: Filtreleme ve birleştirmeler için tek indeks  
-   - **Sonuç**: %11.92 toplam iyileşme (740.06 ms)  
+
+   * A single index for both filtering and joining
+   * **Total Improvement**: 11.92% (740.06 ms)
 
 ---
 
+## Performance Summary
 
+| Query   | Before Optimization | Best Result | Improvement | Key Technique              |
+| ------- | ------------------- | ----------- | ----------- | -------------------------- |
+| Query 1 | 761.19 ms           | 507.15 ms   | **33.36%**  | Composite + Covering Index |
+| Query 2 | 833.74 ms           | 810.54 ms   | **2.78%**   | Filtering Index            |
+| Query 3 | 840.24 ms           | 740.06 ms   | **11.92%**  | Filtered Index             |
 
-## Performans Sonuçları Özeti  
-| Sorgu | Optimizasyon Öncesi | En İyi Sonuç | İyileşme | Ana Optimizasyon Tekniği |  
-|-------|---------------------|--------------|----------|--------------------------|  
-| Sorgu 1 | 761.19 ms | 507.15 ms | **%33.36** | Bileşik + Kapsayan İndeks |  
-| Sorgu 2 | 833.74 ms | 810.54 ms | **%2.78** | Filtreleme İndeksi |  
-| Sorgu 3 | 840.24 ms | 740.06 ms | **%11.92** | Filtrelenmiş İndeks |  
+## Technical Approach & Automation
 
+### Optimization Strategy
 
-## Teknik Yaklaşım ve Otomasyon  
-### Optimizasyon Stratejileri  
-1. **İndeks Seçimi**: WHERE, JOIN ve ORDER BY cümleciklerinde kullanılan sütunlar analiz edildi  
-2. **İndeks Türü Belirleme**:  
-   - Bileşik indeksler (sıralı erişim için)  
-   - Kapsayan indeksler (tablo erişimini önlemek için)  
-   - Filtrelenmiş indeksler (özel koşullar için)  
-3. **Performans Ölçümü**:  
-   - Her optimizasyon adımı sonrası 100+ çalıştırma  
-   - Min, max ve ortalama sürelerin kaydedilmesi  
+1. **Index Selection**: Analyzed columns used in WHERE, JOIN, and ORDER BY clauses
+2. **Index Type Decisions**:
 
-### Otomasyon Yazılımı  
-- **Sorgu Seçimi**: 3 farklı sorgu için seçim imkanı  
-- **Otomatik Test**: 100 çalıştırma ve önbellek temizleme otomasyonu  
-- **Görsel Raporlama**: Çalışma sürelerinin grafiksel gösterimi  
-- **Optimizasyon Önerileri**: Sorguya özel indeks yapıları önerisi  
+   * Composite indexes (for sequential access)
+   * Covering indexes (to avoid base table access)
+   * Filtered indexes (for selective conditions)
+3. **Performance Measurement**:
+
+   * Over 100 executions per optimization step
+   * Recorded min, max, and average durations
+
+### Automation Software
+
+* **Query Selection**: Users can choose from 3 different queries
+* **Auto Testing**: Automates 100 executions and cache clearing
+* **Visual Reporting**: Graphical visualization of execution times
+* **Optimization Suggestions**: Index recommendations tailored to each query
 
 ---
 
-İstediğiniz düzeltmeyle birlikte "Nasıl Çalıştırılır?" bölümünü aşağıdaki gibi güncelleyebilirsiniz:
+## How to Run
 
----
-
-## Nasıl Çalıştırılır?
-1. **Veritabanı Kurulumu**:
+1. **Database Setup**:
 
    ```sql
    RESTORE DATABASE AdventureWorks2012 
@@ -262,11 +289,11 @@ SELECT STOR.Name as StoreName,
         MOVE 'AdventureWorks2012_Log' TO 'C:\Data\AdventureWorks2012.ldf';
    ```
 
-2. **İndeks Optimizasyonlarını Uygula**:
-   Her sorguya karşılık gelen indeksleri aşağıdaki gibi sırayla uygulayabilirsiniz:
+2. **Apply Index Optimizations**:
+   Execute indexes relevant to the selected query:
 
    ```sql
-   -- Örnek: Sorgu 1 için
+   -- Example: For Query 1
    CREATE NONCLUSTERED INDEX IX1_SalesOrderHeader 
    ON Sales.SalesOrderHeader (OrderDate, OnlineOrderFlag, ShipToAddressID);
 
@@ -279,19 +306,22 @@ SELECT STOR.Name as StoreName,
    INCLUDE (City, StateProvinceID);
    ```
 
-3. **Uygulama Arayüzünü Kullan**:
+3. **Use the Application Interface**:
 
-   * `Form1.cs` dosyasındaki `connectionString` alanını kendi veritabanı ortamınıza göre güncelleyin
-   * Arayüz üzerinden sorgu seçin, kullanıcı sayısını belirtin
-   * "Analiz Et" butonuna tıklayarak sorgu testi ve performans ölçümünü başlatın
+   * Update the `connectionString` in `Form1.cs` to your own database settings
+   * Select a query and specify user count through the interface
+   * Click the “Analyze” button to run performance tests and view results
 
+---
 
-## Projenin Öne Çıkan Yönleri  
-* Sorguların ve veritabanı şemasının değiştirilmeden yalnızca stratejik indeksleme ile performans iyileştirmesi sağlandı.
-* Her optimizasyon adımı, önbellek temizlenerek 100+ tekrar ile ölçümlenerek istatistiksel güvenilirlik elde edildi.
-* İyileştirmeler sadece sorgu performansına değil, indeksleme stratejilerine dair pratik bilgi birikimi sağladı.
-* Otomasyon arayüzü ile indeks testleri ve süre analizleri kullanıcı dostu bir biçimde yönetildi.
-* Gerçek dünyadaki sistem davranışına yakın sonuçlar elde etmek için cache etkisi kontrollü biçimde ele alındı.
+## Project Highlights
 
-## Lisans  
-Bu proje akademik amaçlarla hazırlanmıştır. Kaynak gösterilerek kullanılabilir.
+* Achieved performance improvement **without modifying queries or database schema**, only through strategic indexing.
+* Every optimization step was validated with over 100 iterations and memory cleared, ensuring statistical reliability.
+* Provided hands-on experience in indexing strategies and performance tuning.
+* The user-friendly automation interface facilitated testing and analysis.
+* Simulated real-world system behavior by carefully managing caching effects.
+
+## License
+
+This project was developed for academic purposes and is free to use with attribution.
