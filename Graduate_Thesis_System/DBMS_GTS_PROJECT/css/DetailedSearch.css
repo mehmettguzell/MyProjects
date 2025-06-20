@@ -1,0 +1,224 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    header h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+nav ul {
+    background: #444;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+    nav ul li {
+        margin: 0;
+    }
+
+        nav ul li a {
+            color: #fff;
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+            nav ul li a:hover {
+                background: #555;
+                border-radius: 3px;
+            }
+
+main {
+    padding: 30px;
+    max-width: 1700px;
+    margin: 20px auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: #333;
+    color: #fff;
+    font-size: 14px;
+}
+
+.search-form {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+    .search-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .search-form input,
+    .search-form select,
+    .search-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .search-form select,
+    .search-form textarea {
+        resize: vertical;
+    }
+
+    .search-form .left-column,
+    .search-form .right-column {
+        width: 48%;
+    }
+
+    .search-form .left-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-form .right-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-form .buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+        .search-form .buttons button,
+        .search-form .buttons input[type="submit"],
+        .search-form .buttons input[type="reset"] {
+            padding: 12px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 48%;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+            .search-form .buttons button:hover,
+            .search-form .buttons input[type="submit"]:hover,
+            .search-form .buttons input[type="reset"]:hover {
+                background-color: #555;
+            }
+
+        .search-form .buttons input[type="reset"] {
+            background-color: #f44336;
+        }
+
+            .search-form .buttons input[type="reset"]:hover {
+                background-color: #e53935;
+            }
+
+        .search-form .buttons input[type="submit"] {
+            background-color: #4CAF50;
+        }
+
+            .search-form .buttons input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+.thesis-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+    .thesis-grid th, .thesis-grid td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .thesis-grid th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    .thesis-grid tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .thesis-grid tr:hover {
+        background-color: #f1f1f1;
+    }
+
+@media screen and (max-width: 768px) {
+    .thesis-grid th, .thesis-grid td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .search-form .left-column,
+    .search-form .right-column {
+        width: 100%;
+    }
+
+    .search-form .buttons {
+        flex-direction: column;
+    }
+
+        .search-form .buttons button,
+        .search-form .buttons input[type="submit"],
+        .search-form .buttons input[type="reset"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+}
+.clear-button {
+    background-color: red; /* Kırmızı arka plan rengi */
+    color: white; /* Yazı rengi beyaz */
+    border: none; /* Kenarlık yok */
+    padding: 10px 20px; /* İç boşluk */
+    cursor: pointer; /* Fare imlecini butona uygun şekilde göster */
+}
+
+    .clear-button:hover {
+        background-color: darkred; /* Hover durumunda daha koyu kırmızı */
+    }
+

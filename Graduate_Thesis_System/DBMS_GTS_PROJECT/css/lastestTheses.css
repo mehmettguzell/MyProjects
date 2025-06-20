@@ -1,0 +1,227 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    header h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+nav ul {
+    background: #444;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+    nav ul li {
+        margin: 0;
+    }
+
+        nav ul li a {
+            color: #fff;
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+            nav ul li a:hover {
+                background: #555;
+                border-radius: 3px;
+            }
+
+main {
+    padding: 30px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+    form label {
+        margin: 10px 0 5px;
+    }
+
+    form input, form textarea, form button {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    form button {
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+    }
+
+        form button:hover {
+            background: #555;
+        }
+
+.search-form {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+    .search-form form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-form label {
+        flex: 1 1 100%;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .search-form input,
+    .search-form select {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .search-form .buttons {
+        flex: 1 1 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .search-form .buttons button, .search-form .buttons input[type="submit"], .search-form .buttons input[type="reset"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .search-form .buttons button:hover, .search-form .buttons input[type="submit"]:hover, .search-form .buttons input[type="reset"]:hover {
+                background-color: #555;
+            }
+
+.thesis-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .thesis-grid th, .thesis-grid td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .thesis-grid th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    .thesis-grid tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .thesis-grid tr:hover {
+        background-color: #f1f1f1;
+    }
+
+
+.main-content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+.dates {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-label {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.date-input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 150px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+}
+
+    .date-input:focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+        outline: none;
+    }
+
+.date-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+    .date-button:hover {
+        background-color: #c0392b;
+    }
