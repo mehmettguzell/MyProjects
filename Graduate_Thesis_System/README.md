@@ -44,7 +44,7 @@
 * Defined Primary and Foreign Key relationships
 * Junction tables for many-to-many relationships (`LIST`, `ADVISING`)
 * SQL functions and control structures for automatic data generation
-* The `CREATE` and `INSERT` scripts for these tables are included in ![this file]()
+* The `CREATE` and `INSERT` scripts for these tables are included in ![this file](https://github.com/mehmettguzell/MyProjects/blob/main/Graduate_Thesis_System/DbQuerys.md)
 
 ### Main Tables
 
