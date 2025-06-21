@@ -1,0 +1,206 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    padding: 25px;
+    margin-bottom: 10px;
+}
+
+    header img {
+        height: 150px;
+    }
+
+    header nav a {
+        margin: 0 20px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+        header nav a:hover {
+            color: #F44336;
+        }
+
+
+.pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.page {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5c5c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 27px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    margin: 10px;
+}
+
+    .page:hover {
+        background-color: #ff3c3c;
+    }
+
+.main-content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 150px;
+}
+
+.dates {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-label {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.date-input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 150px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+}
+
+    .date-input:focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+        outline: none;
+    }
+
+.date-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+    .date-button:hover {
+        background-color: #c0392b;
+    }
+
+.graph {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.income-expense-chart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.income, .expense {
+    width: 50px;
+    transition: height 0.3s ease-in-out;
+}
+
+.income {
+    background-color: #2ecc71;
+}
+
+.expense {
+    background-color: #e74c3c;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 55px;
+}
+
+.income-label {
+    color: #2ecc71;
+}
+
+.expense-label {
+    color: #e74c3c;
+}
+
+
+.statistics {
+    margin-top: 30px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+    .statistics ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+        .statistics ul li {
+            font-size: 25px;
+            color: #555;
+            margin-bottom: 13px;
+        }
+
+            .statistics ul li strong {
+                color: #333;
+                display: inline-block;
+                line-height: 35px;
+                min-width: 200px;
+                text-align: right;
+            }
+
+
+
+
+

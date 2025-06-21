@@ -1,0 +1,113 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+}
+
+#LoginForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+    #LoginForm h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.form-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+input[type="text"], input[type="password"], .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+    input[type="text"]:focus, input[type="password"]:focus, .form-input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.login-button {
+    margin-top: 20px;
+}
+
+.button-style {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .button-style:hover {
+        background-color: #0056b3;
+    }
+
+.helper-links {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #007bff;
+}
+
+    .helper-links span {
+        margin: 0 5px;
+        color: #333;
+    }
+
+    .helper-links a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .helper-links a:hover {
+            text-decoration: underline;
+        }
+
+.message {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #d9534f;
+}
