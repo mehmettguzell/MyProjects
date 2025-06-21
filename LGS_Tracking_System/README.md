@@ -112,8 +112,78 @@
   * Entering new exam results manually or by PDF upload,
   * Reviewing and reporting exam details in tabular format.
 
+### Login Module
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_1.png)
+
+The login module is a core component ensuring the security of the application. Users log in with their username and password. During the login process:
+
+* The entered credentials are validated.
+* Users are warned about missing or incorrect inputs.
+* A maximum number of login attempts is enforced (e.g., 5 tries).
+* Upon successful login, the system determines the user's role (Admin or Student) and performs role-based redirection.
+* After login, users are directed to their appropriate panel interface (AdminHomePage or StudentHomePage).
+  This structure ensures that only authorized users can access the system while simplifying the user experience.
+
+### Admin Panel
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_3.png)
+Administrators have full control over the system and can perform student and exam management tasks. The main features include:
+
+* **Student Management:**
+
+  * Creating new student records.
+  * Updating existing student information (name, username, gender, contact details, etc.).
+  * Deleting specific students from the system.
+  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_10.png)
+* **Exam Management:**
+
+  * Adding new exams by entering exam name, date, and subject-wise counts of correct, incorrect, and blank answers.
+  * Searching and deleting exams by exam name.
+    ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_9.png)
+* **Performance Visualization:**
+  * Displaying students’ exam performances graphically.
+  * Listing historical exam data in tabular form.
+    The admin panel uses a tabbed interface (TabControl) to enhance usability, with each function accessible on separate tabs and supported by user-friendly UI elements.
+  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_6.png)
+
+### Student Panel
+
+After login, students can only access data related to their own accounts. The main features offered are:
+
+* **Exam History:**
+
+  * Listing previous exam results in a table format with basic info such as exam name, date, and net scores.
+  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_13.png)
+
+* **Add New Exam Result:**
+
+  * Students can manually enter new exam results by filling in exam name, date, and subject-wise correct, incorrect, and blank answer counts via input fields.
+  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_14.png)
+
+* **Import via PDF:**
+
+  * Students can also upload exam results using a PDF file formatted according to system specifications. The system parses the PDF and extracts necessary data to create the exam record.
+  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_16.png)
+
+
+### Exam Details and PDF Reporting
+
+Detailed information is available for each exam registered in the system, including:
+
+* Subject name
+* Number of correct answers
+* Number of incorrect answers
+* Number of blank answers
+* Total number of questions
+* Net (scoring) information
+  This data is presented in tabular form within the UI and can be exported as a PDF report. PDF reports allow archiving, printing, or sharing of exam performance records.
+  PDF generation is implemented using the iTextSharp library, formatting all exam details in a clear, structured table layout.
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_7.png)
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_8.png)
+
+
 > When exam results are downloaded as a PDF, it includes the student’s net scores, counts of correct, incorrect, and blank answers for the relevant exam, a subject-wise comparison of net scores from the last 5 trial exams, and a graph depicting net performance.
 > [Sample PDF](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/exam_result_report_sample.pdf)
+
 
 ## Architecture Details (Layered Structure)
 
@@ -192,3 +262,5 @@ Thanks to this architecture, the project achieves:
 ---
 
 > Finally, the project's screenshots can be found in the `/ScreenShots/UIss` folder.
+
+## UI
