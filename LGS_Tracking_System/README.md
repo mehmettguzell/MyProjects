@@ -270,4 +270,3 @@ Thanks to this architecture, the project achieves:
 
 > Finally, the project's screenshots can be found in the `/ScreenShots/UIss` folder.
 
-## UI
