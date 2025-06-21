@@ -1,139 +1,138 @@
-# Sporcu Takip Web Uygulaması
+# Sports Tracking System
 
-## Proje Hakkında
+## Project Overview
 
-**Sporcu Takip Web Uygulaması**, spor okulları ve futbol kursları için geliştirilmiş, öğrenci yönetimi, ödeme takibi, sporcu gelişim izleme ve finansal raporlama süreçlerini kolaylaştıran bir web tabanlı yönetim sistemidir.
+**Sports Tracking System** is a web-based management system developed for sports schools and football academies to streamline student management, payment tracking, athlete development monitoring, and financial reporting processes.
 
-Projenin temel amacı, spor okullarının günlük operasyonlarını dijitalleştirerek verimliliği artırmak ve aynı zamanda yazılım geliştirme süreçlerinde pratik deneyim kazanmaktır. Uygulama, ASP.NET, Microsoft SQL Server, HTML, CSS ve JavaScript teknolojileri kullanılarak geliştirilmiştir.
+The primary goal of the project is to digitize the daily operations of sports schools, enhancing efficiency while providing practical experience in software development. The application was built using ASP.NET, Microsoft SQL Server, HTML, CSS, and JavaScript technologies.
 
-## Proje Amaçları
+## Project Objectives
 
-Proje, aşağıdaki temel hedeflere ulaşmayı amaçlamaktadır:
+The project aims to achieve the following key objectives:
 
-1. Merkezi Yönetim: Spor okullarının öğrenci kayıtları, seans planlamaları ve finansal işlemlerini tek platformda birleştirmek.
+1. **Centralized Management:** Consolidate student registrations, session scheduling, and financial transactions into a single platform for sports schools.
+2. **Data Security:** Protect user data using salting and hashing techniques for secure storage.
+3. **User-Friendly Interface:** Provide an intuitive and responsive interface to simplify operational processes.
+4. **Athlete Development:** Track students’ physical and performance metrics (height, weight, muscle mass, vertical jump, etc.) to monitor their progress.
+5. **Financial Transparency:** Generate reports on revenue, expenses, and student statistics to support strategic decision-making.
+6. **Flexible Scheduling:** Plan weekly sessions with morning/afternoon options to accommodate student and family needs.
 
-2. Veri Güvenliği: Kullanıcı verilerini tuzlama ve karma yöntemleriyle korumak.
+## Project Features
 
-3. Kullanıcı Dostu Arayüz: Sezgisel ve hızlı bir arayüzle operasyonel süreçleri kolaylaştırmak.
+The application includes the following modules and pages tailored to the needs of sports schools:
 
-4. Sporcu Gelişimi: Öğrencilerin fiziksel ve performans verilerini kaydedip analiz ederek gelişimlerini takip etmek.
+### 1. Login Page
 
-5. Finansal Şeffaflık: Gelir, gider ve istatistikleri raporlayarak stratejik kararları desteklemek.
+- **Purpose:** Enable authorized personnel (e.g., admin1, test, deneme accounts) to securely access the system.
+- **Features:**
+  - Username and password authentication.
+  - Data security ensured through salting and hashing for passwords.
+  - Unauthorized access is blocked; users attempting to access other pages without logging in are redirected to the login page.
+  - A personalized welcome message is displayed upon login: *"Welcome, [User Name] ([Personnel Title])!"*
+  - Database connection: *Personnel* table.
 
-6. Esnek Planlama: Haftalık seansları sabah/öğleden sonra seçenekleriyle planlayarak öğrenci ve aile ihtiyaçlarına uyum sağlamak.
+### 2. Registration Page
 
-## Proje Özellikleri
+- **Purpose:** Record information for new students and their parents in the system.
+- **Features:**
+  - **Student Information:** Name, surname, age, height, weight, muscle mass, vertical jump.
+  - **Parent Information:** Name, surname, phone number, email.
+  - **Payment Information:** Payment plan, card details, membership type.
+  - Data is saved to the *Student*, *Parent*, and *Payment Plan* tables.
+  - Form validation ensures data integrity.
+  - Database connection: *Student*, *Parent*, *Payment Plan* tables.
 
-Uygulama, spor okullarının ihtiyaçlarına yönelik aşağıdaki modülleri ve sayfaları içermektedir:
+### 3. Home Page
 
-### 1. Giriş Sayfası
+- **Purpose:** Provide administrators with a dashboard summarizing the sports school’s overall status.
+- **Features:**
+  - Real-time display of upcoming payments, sessions, star students, and branch statuses (open, closed, under maintenance).
+  - Integrated with the database for dynamic data updates.
+  - A standard header and in-page navigation menu are used across all pages.
+  - Database connection: *Comments* (starred comments), *Branch* (statuses), *Payment Plan* (upcoming payments) tables.
 
-- **Amaç:** Yetkili personelin (örneğin, admin1, test, deneme hesapları) güvenli bir şekilde sisteme erişmesini sağlamak.
-- **Özellikler:**
-  - Kullanıcı adı ve şifre ile kimlik doğrulama.
-  - Şifre güvenliği için tuzlama ve karma yöntemleri kullanılarak veri güvenliği sağlanmıştır.
-  - Yetkisiz erişim engellenir; kullanıcı, giriş yapmadan diğer sayfalara yönlendirilirse otomatik olarak giriş sayfasına geri döner.
-  - Giriş yapan kullanıcıya kişiselleştirilmiş bir karşılama mesajı gösterilir: *"Hoş geldiniz, \[Kullanıcı Adı\] (\[Personel Unvanı\])!"*
-  - Veritabanı bağlantısı: *Personel* tablosu.
+### 4. Student Progress Page
 
-### 2. Kayıt Sayfası
+- **Purpose:** Monitor students’ monthly performance data and teacher comments.
+- **Features:**
+  - Monthly recorded data: Height, weight, muscle mass, vertical jump, etc.
+  - Teacher comments and star ratings (*true*/*false* flags).
+  - Starred comments (*true* flagged) are highlighted on the home page.
+  - Months are selectable via buttons, displaying relevant data and comments.
+  - Database connection: *Performance* and *Comments* tables.
 
-- **Amaç:** Yeni öğrencilerin ve velilerinin bilgilerini sisteme kaydetmek.
-- **Özellikler:**
-  - **Öğrenci Bilgileri:** Ad, soyad, yaş, boy, kilo, kas kütlesi, dikey sıçrama.
-  - **Veli Bilgileri:** Ad, soyad, telefon numarası, e-posta.
-  - **Ödeme Bilgileri:** Ödeme planı, kart bilgileri, üyelik türü.
-  - Veriler, *Öğrenci*, *Veli* ve *Ödeme Planı* tablolarına kaydedilir.
-  - Form doğrulaması ile veri bütünlüğü sağlanır.
-  - Veritabanı bağlantısı: *Öğrenci*, *Veli*, *Ödeme Planı* tabloları.
+### 5. Appointment Management Page
 
-### 3. Ana Sayfa
+- **Purpose:** Facilitate session scheduling and student assignments.
+- **Features:**
+  - Sessions are scheduled twice a week (Monday-Wednesday or Tuesday-Thursday) with morning and afternoon options.
+  - Branch, student, teacher, and day are selected to assign available time slots.
+  - The number of students per session is displayed.
+  - Sessions are planned on weekdays to reserve weekends for family time.
+  - Database connection: *Appointment*, *Student*, *Teacher*, *Branch* tables.
 
-- **Amaç:** Yöneticilere spor okulunun genel durumunu özetleyen bir kontrol paneli sunmak.
-- **Özellikler:**
-  - Yaklaşan ödemeler, seanslar, yıldız öğrenciler ve şube durumları (açık, kapalı, bakımda) gerçek zamanlı olarak görüntülenir.
-  - Dinamik veri güncellemeleri için veritabanı ile entegre çalışır.
-  - Standart başlık (header) ve sayfa içi yönlendirme menüsü tüm sayfalarda kullanılır.
-  - Veritabanı bağlantısı: *Yorumlar* (yıldızlı yorumlar), *Şube* (durumlar), *Ödeme Planı* (yaklaşan ödemeler) tabloları.
+### 6. Payment Plan Page
 
-### 4. Öğrenci Gelişim Sayfası
+- **Purpose:** Display detailed student payment plans and related information.
+- **Features:**
+  - Shows student photo, card details, payment plan, and parent information.
+  - Upcoming payments from the home page can be viewed in detail on this page.
+  - Payment date, method, type, and amount are retrieved from the database.
+  - Database connection: *Payment Plan*, *Student*, *Parent* tables.
 
-- **Amaç:** Öğrencilerin aylık performans verilerini ve öğretmen yorumlarını takip etmek.
-- **Özellikler:**
-  - Aylık bazda kaydedilen veriler: Boy, kilo, kas kütlesi, dikey sıçrama vb.
-  - Öğretmen yorumları ve yıldız değerlendirmeleri (*true*/*false* ile işaretlenir).
-  - Yıldızlı yorumlar (*true* olarak işaretlenenler) ana sayfada öne çıkar.
-  - Aylar, düğmelerle seçilebilir; ilgili veriler ve yorumlar listelenir.
-  - Veritabanı bağlantısı: *Performans* ve *Yorumlar* tabloları.
+### 7. Finance Page
 
-### 5. Randevu Yönetim Sayfası
+- **Purpose:** Report financial data and student statistics for a specific date range.
+- **Features:**
+  - Total revenue, expenses, net profit, enrolled, and withdrawn student counts are presented in a table format.
+  - Data is dynamically retrieved from the *Revenue*, *Expenses*, and *Registration* tables.
+  - Provides valuable insights for performance analysis and strategic decisions.
+  - Database connection: *Revenue*, *Expenses*, *Student*, *Registration* tables.
 
-- **Amaç:** Seans planlamasını ve öğrenci atamalarını kolaylaştırmak.
-- **Özellikler:**
-  - Seanslar haftada iki gün (Pazartesi-Çarşamba veya Salı-Perşembe) sabah ve öğleden sonra olarak planlanır.
-  - Şube, öğrenci, öğretmen ve gün seçilerek uygun saatler atanır.
-  - Her seansın öğrenci sayısı görüntülenir.
-  - Hafta sonları aile zamanına ayrılması için seanslar hafta içine planlanmıştır.
-  - Veritabanı bağlantısı: *Randevu*, *Öğrenci*, *Öğretmen*, *Şube* tabloları.
+## Technical Infrastructure
 
-### 6. Ödeme Planı Sayfası
+### Database Design
 
-- **Amaç:** Öğrencilerin ödeme planlarını ve ilgili bilgileri detaylı bir şekilde görüntülemek.
-- **Özellikler:**
-  - Öğrencinin fotoğrafı, kart bilgileri, ödeme planı ve veli bilgileri gösterilir.
-  - Yaklaşan ödemeler, ana sayfadan seçilerek bu sayfada detaylı incelenebilir.
-  - Ödeme tarihi, yöntemi, türü ve miktarı gibi bilgiler veritabanından çekilir.
-  - Veritabanı bağlantısı: *Ödeme Planı*, *Öğrenci*, *Veli* tabloları.
+The database, its diagram, main tables, and data types are included in the visuals below:
+![](https://github.com/mehmettguzell/MyProjects/blob/main/Sports_Tracking_Web_App/ScreenShots/DiagramAndDb/Screenshot_1.png)
+![](https://github.com/mehmettguzell/MyProjects/blob/main/Sports_Tracking_Web_App/ScreenShots/DiagramAndDb/Screenshot_4.png)
+![](https://github.com/mehmettguzell/MyProjects/blob/main/Sports_Tracking_Web_App/ScreenShots/DiagramAndDb/Screenshot_3.png)
 
-### 7. Finans Sayfası
+## Development Process
 
-- **Amaç:** Belirli bir tarih aralığında finansal verileri ve öğrenci istatistiklerini raporlamak.
-- **Özellikler:**
-  - Toplam gelir, gider, net kâr, kayıt olan ve ayrılan öğrenci sayıları tablo formatında sunulur.
-  - Veriler, *Gelir*, *Gider* ve *Kayıt* tablolarından dinamik olarak alınır.
-  - Spor okulunun performans analizi ve stratejik kararlar için değerli bilgiler sağlar.
-  - Veritabanı bağlantısı: *Gelir*, *Gider*, *Öğrenci*, *Kayıt* tabloları.
+### Phase 1
 
-## Teknik Altyapı
-### Veritabanı Tasarımı
+- **Planning and Research:** Operational processes and needs of sports schools were analyzed.
+- **Design:** Wireframes for seven pages (Login, Registration, Home, Student Progress, Appointment Management, Payment Plan, Finance) were created using Wireframe.cc. These were converted into real pages using HTML, CSS, and JavaScript.
+- **Database Design:** An Entity-Relationship Diagram (ERD) was drawn using Lucidchart. Tables were created in MSSQL Server, with data types and PK/FK relationships defined.
 
-Veritabanın, Diagramı, Ana tabloları ve veri tipleri aşağıdaki görsellerde bulunmaktadır:
+> Wireframes, database, and frontend screenshots are available in the *Screenshots* folder.
 
+### Phase 2
 
-## Geliştirme Süreci
+- **Backend Development:** Server-side code was written using ASP.NET. User login, data registration, payment tracking, and reporting functions were implemented.
+- **Data Security:** Passwords were secured using salting and hashing techniques.
+- **Testing and Debugging:** The application was tested in various scenarios, and errors were resolved.
+- **Documentation:** Project processes were thoroughly documented, and a presentation was prepared.
+- **Deliverables:** Functional application, database backup, source code, updated diagrams, and final report.
 
-### 1. Aşama 
+## Key Learnings
 
-- **Planlama ve Araştırma:** Spor okullarının operasyonel süreçleri ve ihtiyaçları analiz edildi.
-- **Tasarım:** Wireframe.cc kullanılarak yedi sayfanın wireframe'leri oluşturuldu (Giriş, Kayıt, Ana Sayfa, Öğrenci Gelişim, Randevu Yönetim, Ödeme Planı, Finans). Bu taslaklar, HTML, CSS ve JavaScript ile gerçek sayfalara dönüştürüldü.
-- **Veritabanı Tasarımı:** Lucidchart ile ERD çizildi. MSSQL Server ile tablolar oluşturuldu, veri tipleri ve PK/FK ilişkileri tanımlandı.
+This project provided valuable skills across all stages of software development:
 
-> wireframe, Database ve frontend ssleri ScreenShots klasöründe bulunmaktadır.
-### 2. Aşama 
+- **Technical Skills:**
+  - Full-stack web development with ASP.NET and C#.
+  - Database design, ERD creation, and writing complex SQL queries with MSSQL Server.
+  - User-friendly interface design using HTML, CSS, and JavaScript.
+  - Implementing salting, hashing, and encryption for password security.
+- **Project Management:**
+  - Requirements analysis, project planning, and time management.
 
-- **Backend Geliştirme:** ASP.NET ile sunucu tarafı kodları yazıldı. Kullanıcı girişi, veri kaydı, ödeme takibi ve raporlama işlevleri implemente edildi.
-- **Veri Güvenliği:** Şifreler için tuzlama ve karma yöntemleri uygulandı.
-- **Test ve Hata Ayıklama:** Uygulama farklı senaryolarda test edildi, hatalar giderildi.
-- **Dokümantasyon:** Proje süreçleri detaylı bir şekilde belgelendi, sunum hazırlandı.
-- **Teslim Edilenler:** Çalışan uygulama, veritabanı yedeği, kaynak kodlar, güncellenmiş diyagramlar ve final raporu.
+## Future Improvements
 
-## Kazanımlar
-Bu proje, yazılım geliştirme sürecinin her aşamasında bana değerli beceriler kazandırdı:
-
-- **Teknik Beceriler:**
-  - ASP.NET, C# ile full-stack web geliştirme.
-  - MSSQL Server ile veritabanı tasarımı, ERD oluşturma ve karmaşık SQL sorguları yazma.
-  - HTML, CSS ve JavaScript ile kullanıcı dostu arayüz tasarımı.
-  - Parola güvenliği için salting, hashleme ve şifreleme yöntemleri uygulama.
-- **Proje Yönetimi:**
-  - Gereksinim analizi, proje planlama ve zaman yönetimi.
-
-## Gelecekteki İyileştirmeler
-
-- **Mimariyi Geliştirme:** Sistem mimarisini daha ölçeklenebilir, modüler ve güvenli hale getirmek için yeniden yapılandırma ve modern yaklaşımların benimsenmesi.
-
-- **Mobil Uyumluluk:** Responsive tasarım ile mobil cihazlarda sorunsuz kullanım.
-- **Otomatik Bildirimler:** Ödeme hatırlatmaları için e-posta veya SMS entegrasyonu.
-- **Gelişmiş Görselleştirme:** Öğrenci gelişim verileri için interaktif grafikler.
-- **Çoklu Dil Desteği:** Uluslararası kullanım için dil seçenekleri.
-- **Performans Optimizasyonu:** Veritabanı sorgularını ve sayfa yükleme sürelerini iyileştirme.
+- **Architecture Enhancement:** Restructure the system architecture to be more scalable, modular, and secure by adopting modern approaches.
+- **Mobile Compatibility:** Implement responsive design for seamless use on mobile devices.
+- **Automated Notifications:** Integrate email or SMS for payment reminders.
+- **Advanced Visualization:** Interactive charts for student progress data.
+- **Multilingual Support:** Add language options for international use.
+- **Performance Optimization:** Improve database queries and page load times.
