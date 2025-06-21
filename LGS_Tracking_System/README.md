@@ -112,7 +112,8 @@
   * Entering new exam results manually or by PDF upload,
   * Reviewing and reporting exam details in tabular format.
 
-> When exam results are downloaded as a PDF, it includes the student’s net scores, counts of correct, incorrect, and blank answers for the relevant exam, a subject-wise comparison of net scores from the last 5 trial exams, and a graph depicting net performance. [Sample PDF]()
+> When exam results are downloaded as a PDF, it includes the student’s net scores, counts of correct, incorrect, and blank answers for the relevant exam, a subject-wise comparison of net scores from the last 5 trial exams, and a graph depicting net performance.
+> [Sample PDF](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/exam_result_report_sample.pdf)
 
 ## Architecture Details (Layered Structure)
 
@@ -183,7 +184,8 @@ Thanks to this architecture, the project achieves:
 * The database used in this project supports the fundamental data structures necessary for system operation. The database is named **LgsProject** and contains various tables storing user information, exams, students participating in exams, and subject-based exam results.
 
 > Below is the project's database diagram:
-> ![]()
+
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/DiagramSS/Screenshot_2.png)
 
 > Additionally, a backup of the database is included as the **LgsProject.bak** file.
 
