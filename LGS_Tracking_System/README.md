@@ -126,23 +126,26 @@ The login module is a core component ensuring the security of the application. U
 
 ### Admin Panel
 ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_3.png)
-Administrators have full control over the system and can perform student and exam management tasks. The main features include:
+- Administrators have full control over the system and can perform student and exam management tasks. The main features include:
 
 * **Student Management:**
 
   * Creating new student records.
   * Updating existing student information (name, username, gender, contact details, etc.).
   * Deleting specific students from the system.
+    
   ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_10.png)
 * **Exam Management:**
 
   * Adding new exams by entering exam name, date, and subject-wise counts of correct, incorrect, and blank answers.
   * Searching and deleting exams by exam name.
+    
     ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_9.png)
 * **Performance Visualization:**
   * Displaying students’ exam performances graphically.
   * Listing historical exam data in tabular form.
     The admin panel uses a tabbed interface (TabControl) to enhance usability, with each function accessible on separate tabs and supported by user-friendly UI elements.
+    
   ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_6.png)
 
 ### Student Panel
@@ -152,11 +155,13 @@ After login, students can only access data related to their own accounts. The ma
 * **Exam History:**
 
   * Listing previous exam results in a table format with basic info such as exam name, date, and net scores.
+    
   ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_13.png)
 
 * **Add New Exam Result:**
 
   * Students can manually enter new exam results by filling in exam name, date, and subject-wise correct, incorrect, and blank answer counts via input fields.
+    
   ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_14.png)
 
 * **Import via PDF:**
@@ -177,6 +182,7 @@ Detailed information is available for each exam registered in the system, includ
 * Net (scoring) information
   This data is presented in tabular form within the UI and can be exported as a PDF report. PDF reports allow archiving, printing, or sharing of exam performance records.
   PDF generation is implemented using the iTextSharp library, formatting all exam details in a clear, structured table layout.
+  
 ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_7.png)
 ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_8.png)
 
