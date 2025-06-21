@@ -134,19 +134,19 @@ The login module is a core component ensuring the security of the application. U
   * Updating existing student information (name, username, gender, contact details, etc.).
   * Deleting specific students from the system.
     
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_10.png)
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_10.png)
 * **Exam Management:**
 
   * Adding new exams by entering exam name, date, and subject-wise counts of correct, incorrect, and blank answers.
   * Searching and deleting exams by exam name.
     
-    ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_9.png)
+ ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_9.png)
 * **Performance Visualization:**
   * Displaying students’ exam performances graphically.
   * Listing historical exam data in tabular form.
     The admin panel uses a tabbed interface (TabControl) to enhance usability, with each function accessible on separate tabs and supported by user-friendly UI elements.
     
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_6.png)
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_6.png)
 
 ### Student Panel
 
@@ -156,18 +156,19 @@ After login, students can only access data related to their own accounts. The ma
 
   * Listing previous exam results in a table format with basic info such as exam name, date, and net scores.
     
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_13.png)
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_13.png)
 
 * **Add New Exam Result:**
 
   * Students can manually enter new exam results by filling in exam name, date, and subject-wise correct, incorrect, and blank answer counts via input fields.
     
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_14.png)
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_14.png)
 
 * **Import via PDF:**
 
   * Students can also upload exam results using a PDF file formatted according to system specifications. The system parses the PDF and extracts necessary data to create the exam record.
-  ![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_16.png)
+
+![](https://github.com/mehmettguzell/MyProjects/blob/main/LGS_Tracking_System/ScreenShots/UIss/Screenshot_16.png)
 
 
 ### Exam Details and PDF Reporting
